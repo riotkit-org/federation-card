@@ -5,6 +5,8 @@
 /.idea/
 /.vscode/
 npm-debug.log
+_tmp
+
 
 # Optional ignores
 # /build_staging/

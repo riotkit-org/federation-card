@@ -1,5 +1,6 @@
-<?php
+<?php declare(strict_types=1);
 
+use App\Mechanism\Service\CollectionConnector;
 use TightenCo\Jigsaw\Jigsaw;
 
 /** @var $container \Illuminate\Container\Container */
@@ -19,5 +20,5 @@ use TightenCo\Jigsaw\Jigsaw;
 
 
 $events->afterCollections(function (Jigsaw $jigsaw) {
-//    dump($jigsaw->getCollections());
+    CollectionConnector::process($jigsaw->getCollections());
 });

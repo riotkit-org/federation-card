@@ -18,7 +18,7 @@ class CollectionFactory
                                 private string $preferredLanguage = 'pl',
                                 private string $fallbackLanguage = 'pl')
     {
-        $this->searchPath = realpath(dirname(__FILE__)) . '/../../../content/_' . $type;
+        $this->searchPath = realpath(dirname(__FILE__)) . '/../../../content/data/_' . $type;
     }
 
     /**

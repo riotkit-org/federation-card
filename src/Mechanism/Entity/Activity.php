@@ -2,9 +2,9 @@
 
 namespace App\Mechanism\Entity;
 
-use TightenCo\Jigsaw\Collection\CollectionItem;
-
-class Activity extends CollectionItem
+class Activity extends FederationCardEntity
 {
-
+    public function applyRelation(FederationCardEntity $relation): void
+    {
+    }
 }
