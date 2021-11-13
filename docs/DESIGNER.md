@@ -1,6 +1,21 @@
 For Designers
 =============
 
+Installing first time
+---------------------
+
+```bash
+composer install
+npm install
+```
+
+Starting environment
+--------------------
+
+```bash
+make
+```
+
 Editing templates
 -----------------
 
