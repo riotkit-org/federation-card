@@ -14,6 +14,6 @@ abstract class FederationCardEntity extends CollectionItem
             return (string) $this->contentTranslated[$language];
         }
 
-        return $this->defaultLanguageContent;
+        return \Michelf\Markdown::defaultTransform($this->defaultLanguageContent);
     }
 }
