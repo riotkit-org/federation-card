@@ -17,6 +17,7 @@ class Location extends FederationCardEntity
     }
 
     /**
+     * @api
      * @return Organization[]
      */
     public function getOrganizations(): array

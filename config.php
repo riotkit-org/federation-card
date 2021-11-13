@@ -5,6 +5,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 use App\Mechanism\Entity\Activity;
 use App\Mechanism\Entity\Badge;
 use App\Mechanism\Entity\Organization;
+use App\Mechanism\Entity\Location;
 use App\Mechanism\Service\CollectionFactory;
 use TightenCo\Jigsaw\Collection\CollectionItem;
 
@@ -50,5 +51,13 @@ return [
                 return Badge::fromItem($item);
             }
         ],
+        'location' => [
+            'path' => 'locations',
+            'sort' => 'name',
+            'items' => (new CollectionFactory('locations'))->discover(),
+            'map' => function (CollectionItem $item) {
+                return Location::fromItem($item);
+            }
+        ]
     ],
 ];

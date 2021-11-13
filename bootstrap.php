@@ -20,5 +20,9 @@ use TightenCo\Jigsaw\Jigsaw;
 
 
 $events->afterCollections(function (Jigsaw $jigsaw) {
+    /**
+     * Connect all entities together, e.g. Organization -> Location
+     *                                     Organization -> Activity
+     */
     CollectionConnector::process($jigsaw->getCollections());
 });

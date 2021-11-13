@@ -16,7 +16,7 @@ class CollectionFactory
 
     public function __construct(private string $type,
                                 private string $preferredLanguage = 'pl',
-                                private string $fallbackLanguage = 'pl')
+                                private string $fallbackLanguage = 'en')
     {
         $this->searchPath = realpath(dirname(__FILE__)) . '/../../../content/data/_' . $type;
     }
@@ -48,21 +48,23 @@ class CollectionFactory
         $jigsawParser = new FrontMatterParser(new FrontYAMLParser());
         $parsed            = $jigsawParser->parse($content);
         $multipleLanguages = $this->splitByLanguages($parsed->content, $filename);
+        $defaultLanguageContent = $this->pickLanguage($multipleLanguages);
 
         $this->parsed[] = array_merge($parsed->frontMatter, [
-            'extends'           => '_layouts.pages/' . $this->type . '-single',
-            'contentTranslated' => $multipleLanguages,
-            'content'           => $this->pickLanguage($multipleLanguages)
+            'extends'                => '_layouts.pages/' . $this->type . '-single',
+            'contentTranslated'      => $multipleLanguages,
+            'content'                => $defaultLanguageContent,
+            'defaultLanguageContent' => $defaultLanguageContent
         ]);
     }
 
     private function pickLanguage(array $languageVersions): string
     {
-        if (in_array($this->preferredLanguage, $languageVersions)) {
+        if (isset($languageVersions[$this->preferredLanguage])) {
             return $languageVersions[$this->preferredLanguage];
         }
 
-        if (in_array($this->fallbackLanguage, $languageVersions)) {
+        if (isset($languageVersions[$this->fallbackLanguage])) {
             return $languageVersions[$this->fallbackLanguage];
         }
 
@@ -72,20 +74,21 @@ class CollectionFactory
 
     private function splitByLanguages(string $content, string $filename): array
     {
-        $split = preg_split("/^\-\-\-[^-]/", $content);
+        $content = "---\n" . $content;
+        $split = preg_split("/\-\-\-\s+?lang:/", $content);
         $byLanguages = [];
 
         foreach ($split as $languageVersion) {
             $asLines = explode("\n", $languageVersion);
 
-            if (!str_starts_with($asLines[0], 'lang:')) {
-                throw new \Exception('Language version should be marked with e.g. "lang: pl" in "' . $filename . '"');
-            }
-
-            $lang = Yaml::parse($asLines[0])['lang'];
+            $lang = trim($asLines[0]);
             unset($asLines[0]);
 
             $byLanguages[$lang] = implode("\n", $asLines);
+        }
+
+        if (!isset($byLanguages[$this->preferredLanguage]) && !isset($byLanguages[$this->fallbackLanguage])) {
+            throw new \Exception('"' . $filename . '" should have description defined in any of those languages: ' . $this->preferredLanguage . ', ' . $this->fallbackLanguage);
         }
 
         return $byLanguages;

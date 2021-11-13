@@ -1,6 +1,6 @@
 ---
 name: XR Youth Wrocław 
-location: "Wrocław"
+location: "wroclaw"
 thumbnail: images/organizations/xr_youth_wroclaw.png
 activities:
     - "ogolny-aktywizm"

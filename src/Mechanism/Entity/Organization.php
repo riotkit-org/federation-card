@@ -43,6 +43,7 @@ class Organization extends FederationCardEntity
     }
 
     /**
+     * @api
      * @return Activity[]
      */
     public function getActivities(): array
@@ -50,12 +51,17 @@ class Organization extends FederationCardEntity
         return $this->activities;
     }
 
+    /**
+     * @api
+     * @return Location
+     */
     public function getLocation(): Location
     {
         return $this->location;
     }
 
     /**
+     * @api
      * @return Badge[]
      */
     public function getBadges(): array

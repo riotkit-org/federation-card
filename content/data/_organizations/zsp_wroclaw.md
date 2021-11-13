@@ -1,6 +1,6 @@
 ---
 name: Związek Syndykalistów Polski - Wrocław
-location: "Wrocław"
+location: "wroclaw"
 thumbnail: images/organizations/zsp_wroclaw.png
 activities:
     - "prawa-pracownicze"

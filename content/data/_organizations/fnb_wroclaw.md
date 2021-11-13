@@ -1,6 +1,6 @@
 ---
 name: Food Not Bombs Wrocław 
-location: "Wrocław"
+location: "wroclaw"
 thumbnail: images/organizations/fnb_wroclaw.png
 activities:
     - "ogolny-aktywizm"

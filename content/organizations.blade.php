@@ -7,7 +7,11 @@
 
 <ul>
     @foreach ($organizations as $organization)
-        <li>{{ $organization->name }}</li>
+        <li>{{ $organization->name }} z miasta {{ $organization->getLocation()->name }}, {{ $organization->getDescription() }}.
+            @foreach ($organization->getBadges() as $badge)
+                [Badge: {{ $badge->title }}]
+            @endforeach
+        </li>
     @endforeach
 </ul>
 @endsection

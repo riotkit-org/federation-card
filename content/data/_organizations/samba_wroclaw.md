@@ -1,6 +1,6 @@
 ---
 name: Podwórkowa Samba Wrocław 
-location: "Wrocław"
+location: "wroclaw"
 thumbnail: images/organizations/samba_wroclaw.png
 activities:
     - "ogolny-aktywizm"

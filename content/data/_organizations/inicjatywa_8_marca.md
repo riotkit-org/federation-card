@@ -1,6 +1,6 @@
 ---
 name: Inicjatywa 8 Marca
-location: "Wrocław"
+location: "wroclaw"
 thumbnail: images/organizations/inicjatywa_8_marca.png
 activities:
     - "ogolny-aktywizm"

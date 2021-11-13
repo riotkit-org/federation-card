@@ -1,6 +1,6 @@
 ---
 name: Federacja Anarchistyczna Wrocław
-location: "Wrocław"
+location: "wroclaw"
 thumbnail: images/organizations/fa_wroclaw.png
 activities:
     - "ogolny-aktywizm"

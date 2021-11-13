@@ -4,7 +4,7 @@ namespace App\Mechanism\Service;
 
 use App\Mechanism\Entity\Activity;
 use App\Mechanism\Entity\Badge;
-use App\Mechanism\Entity\EntityInterface;
+use App\Mechanism\Entity\FederationCardEntity;
 use App\Mechanism\Entity\Location;
 use App\Mechanism\Entity\Organization;
 use Exception;
@@ -21,7 +21,7 @@ class CollectionConnector
     private const ONE_TO_ONE  = 'one';
     private const MAPPING = [
         Organization::class => [
-            'location'   => ['type' => self::ONE_TO_ONE,  'class' => Location::class, 'field' => 'id'],
+            'location'  =>  ['type' => self::ONE_TO_ONE,  'class' => Location::class, 'field' => 'id'],
             'activities' => ['type' => self::MANY_TO_ONE, 'class' => Activity::class, 'field' => 'id'],
             'badges'     => ['type' => self::MANY_TO_ONE, 'class' => Badge::class,    'field' => 'id'],
         ],
@@ -51,13 +51,18 @@ class CollectionConnector
         }
     }
 
+    private static function log(string $text): void
+    {
+        print(' >> ' . $text . "\n");
+    }
+
     /**
-     * @param CollectionItem|EntityInterface $collectionItem
+     * @param CollectionItem|FederationCardEntity $collectionItem
      * @param CollectionItem[] $flatten
      *
      * @throws Exception
      */
-    private static function processElement(CollectionItem|EntityInterface $collectionItem, array $flatten)
+    private static function processElement(CollectionItem|FederationCardEntity $collectionItem, array $flatten)
     {
         if (!isset(self::MAPPING[$collectionItem::class])) {
             return;
@@ -67,7 +72,7 @@ class CollectionConnector
 
         foreach ($mapping as $parentField => $connection) {
             foreach ($flatten as $potentialChild) {
-                /** @var EntityInterface $potentialChild */
+                /** @var FederationCardEntity $potentialChild */
 
                 if (!$potentialChild instanceof $connection['class']) {
                     continue;
@@ -78,6 +83,7 @@ class CollectionConnector
                     $childValue  = $potentialChild->__get($connection['field']);
 
                     if (in_array($childValue, $parentValue)) {
+                        static::log('Wiring many-to-one [' . $connection['class'] . '] ' . $childValue . ' by ' . json_encode($parentValue) . ' (field=' . $parentField . ') to ' . get_class($collectionItem) . ' (' . $collectionItem->name . ')');
                         $collectionItem->applyRelation($potentialChild);
                         $potentialChild->applyRelation($collectionItem);
                     }
@@ -87,10 +93,13 @@ class CollectionConnector
                     $childValue  = $potentialChild->__get($connection['field']);
 
                     if ($parentValue === $childValue) {
+                        static::log('Wiring one-to-one [' . $connection['class'] . '] ' . $childValue . ' by ' . json_encode($parentValue) . ' (field=' . $parentField . ') to ' . get_class($collectionItem) . ' (' . $collectionItem->name . ')');
                         $collectionItem->applyRelation($potentialChild);
                         $potentialChild->applyRelation($collectionItem);
 
                         break;
+                    } else {
+                        dump($parentValue, $childValue, $connection['field']);
                     }
 
                 } else {
