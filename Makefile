@@ -1,13 +1,18 @@
 BROWSER=chromium
 
-all: foreground_webserver watch
+all: foreground_webserver browser watch
 
 foreground_webserver:
 	cd build_local && python3 -m http.server &
 
-watch:
-	${BROWSER} http://localhost:8000 &
-	@while inotifywait -qqre modify "./src"; do \
+watch: build
+	@while inotifywait -qqre modify "./src" "./content" "bootstrap.php" "config.php" "helpers.php" "config.production.php"; do \
   		date; \
-        jigsaw build; \
+        make build; \
     done
+
+build:
+	./vendor/bin/jigsaw build -vvvv
+
+browser:
+	${BROWSER} http://localhost:8000 &
