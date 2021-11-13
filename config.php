@@ -28,7 +28,7 @@ return [
      */
     'collections' => [
         'organizations' => [
-            'path' => 'organizations',
+            'path' => 'organizations/{location}/{url}',
             'sort' => 'name',
             'items' => (new CollectionFactory('organizations'))->discover(),
             'map' => function (CollectionItem $item) {
@@ -36,7 +36,7 @@ return [
             }
         ],
         'activities' => [
-            'path' => 'activities',
+            'path' => 'activities/{id}',
             'sort' => 'name',
             'items' => (new CollectionFactory('activities'))->discover(),
             'map' => function (CollectionItem $item) {
@@ -44,7 +44,7 @@ return [
             }
         ],
         'badges' => [
-            'path' => 'badges',
+            'path' => 'organization-types/{id}',
             'sort' => 'name',
             'items' => (new CollectionFactory('badges'))->discover(),
             'map' => function (CollectionItem $item) {
@@ -52,7 +52,7 @@ return [
             }
         ],
         'location' => [
-            'path' => 'locations',
+            'path' => 'location/{id}',
             'sort' => 'name',
             'items' => (new CollectionFactory('locations'))->discover(),
             'map' => function (CollectionItem $item) {
