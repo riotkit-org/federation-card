@@ -1,4 +1,5 @@
 ---
+url: "zsp"
 name: Związek Syndykalistów Polski - Wrocław
 location: "wroclaw"
 thumbnail: images/organizations/zsp_wroclaw.png

@@ -1,4 +1,5 @@
 ---
+url: "fnb"
 name: Food Not Bombs Wrocław 
 location: "wroclaw"
 thumbnail: images/organizations/fnb_wroclaw.png

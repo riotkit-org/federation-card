@@ -1,4 +1,5 @@
 ---
+url: "xr-youth"
 name: XR Youth Wrocław 
 location: "wroclaw"
 thumbnail: images/organizations/xr_youth_wroclaw.png

@@ -1,4 +1,5 @@
 ---
+url: "inicjatywa_8_marca"
 name: Inicjatywa 8 Marca
 location: "wroclaw"
 thumbnail: images/organizations/inicjatywa_8_marca.png

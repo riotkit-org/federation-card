@@ -1,4 +1,5 @@
 ---
+url: "samba"
 name: Podwórkowa Samba Wrocław 
 location: "wroclaw"
 thumbnail: images/organizations/samba_wroclaw.png

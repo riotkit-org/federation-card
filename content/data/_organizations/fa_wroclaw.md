@@ -1,4 +1,5 @@
 ---
+url: "fa"
 name: Federacja Anarchistyczna Wrocław
 location: "wroclaw"
 thumbnail: images/organizations/fa_wroclaw.png
@@ -10,6 +11,9 @@ badges:
     #- "akcja_bezposrednia"
 ---         
 lang: pl
+
+FA Wrocław
+==========
 
 Federacja Anarchistyczna jest nieformalnym zrzeszeniem osób zainteresowanych anarchizmem, działaniem antypaństwowym i antykapitalistycznym. Naszym celem jest szerzenie idei anarchizmu, anarchistycznych wartości oraz sposobów organizacji, a także stawianie oporu wobec niesprawiedliwości fundowanej społeczeństwu przez państwową machinę biurokratyczną, prawo i kapitalizm. Wspieramy każdą walkę z przejawami nierówności, będącej nieodłączną częścią wszystkich systemów hierarchicznych. Dążymy do modelu społeczeństwa bezpaństwowego, opierającego się na dobrowolnych, samorządnych stowarzyszeniach.
 Do grupy należą osoby o różnej długości i rodzaju stażu w aktywizmie. Pozwala to na efektywną wymianę doświadczeń i przedyskutowywanie strategii z różnych perspektyw. Staramy się tworzyć grupę otwartą na wszystkich. Jeśli ktoś wie na czym opiera się anarchizm, żyje w zgodzie z anarchistyczną etyką i chce działać, jest zawsze mile widziany.
