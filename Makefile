@@ -14,5 +14,8 @@ watch: build
 build:
 	./vendor/bin/jigsaw build -vvvv
 
+build@prod:
+	./vendor/bin/jigsaw build production -vvvv
+
 browser:
 	${BROWSER} http://localhost:8000 &
